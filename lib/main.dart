@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:form_field_validator/form_field_validator.dart';
 import 'dart:convert';
+import 'package:fluttertoast/fluttertoast.dart';
 void main() {
     runApp(MaterialApp(
         home:MyApp(),
@@ -13,6 +14,7 @@ void main() {
         _pre createState()=>_pre();
     }
     class _pre extends State<MyApp> {
+
         GlobalKey<FormState> j = GlobalKey<FormState>();
 
         void vaildate() {
@@ -54,9 +56,14 @@ void main() {
                                         ),
                                         labelText: "Name"
                                     ),
-                                    validator: vail,
+                                    validator: MultiValidator(
+                                        [
+                                            MinLengthValidator(6, errorText: "min length should be 6"),
+                                            MaxLengthValidator(12, errorText: "max "),
+                                        ]
 
 
+                                ),
                                 ),
                                 Padding(
                                     padding: EdgeInsets.only(
@@ -68,9 +75,17 @@ void main() {
                                             ),
                                             labelText: "Password",
                                         ),
-                                        validator:EmailValidator(errorText: "not a valid"),
+                                        validator:MultiValidator(
+                                        [
+                                            EmailValidator(errorText:"invalid Email id" ),
+                                            RequiredValidator(errorText: "Required"),
+
+            ]
+            ),
+            ),
+
                                     ),
-                                ),
+
                                 Padding(
                                     padding: EdgeInsets.only(
                                         top: 15,
@@ -78,7 +93,7 @@ void main() {
                                     child: RaisedButton(
                                         textColor: Colors.white,
                                         color: Colors.blue,
-                                        onPressed:vaildate,
+                                        onPressed:getData,
                                         child: Text("Login"),
                                     ),
                                 ),
@@ -92,17 +107,21 @@ void main() {
         }
 
         Future getData() async {
-            var url = Uri.parse(
-                'https://fluttermy.000webhostapp.com/getData.php');
+            var url = Uri.parse('https://fluttermy.000webhostapp.com/getData.php');
             http.Response response = await http.get(url);
-            var data = jsonDecode(response.body);
-            print(data.toString());
-        }
+            var data = json.decode(response.body);
 
-        @override
-        void initState() {
-            getData();
-        }
+            Fluttertoast.showToast(
+                msg: '$data',
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb:3,
+                backgroundColor: Colors.red,
+                textColor:Colors.yellow
+            );
+            }
+
+
 
     }
 

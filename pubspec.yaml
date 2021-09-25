@@ -30,7 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   fluttertoast: ^8.0.8
-  http: any
+  http:
   form_field_validator: ^1.0.1
 
   # The following adds the Cupertino Icons font to your application.
