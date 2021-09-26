@@ -8,8 +8,35 @@ class navg extends StatelessWidget{
     return Drawer(
     child:Container(
     color:Color.fromRGBO(50,75,205,1),
+      child:ListView(
+    children:<Widget> [
+      const SizedBox(height:48),
+      buildMenuItem(
+text:"hh",
+icon:Icons.people,
+    ),
+      ],
+    ),
     ),
     );
   }
+  Widget buildMenuItem({
+  required String text,
+  required IconData icon,
+  }) {
 
+final color = Colors.white;return ListTile
+(
+leading: Icon
+(
+icon,color:color),
+title: Text
+(
+text,style:TextStyle
+(
+color:color))
+,
+);
 }
+  }
+
