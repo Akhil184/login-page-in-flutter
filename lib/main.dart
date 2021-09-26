@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:form_field_validator/form_field_validator.dart';
 import 'dart:convert';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:untitled1/navigation_drawer_widget.dart';
 void main() {
     runApp(MaterialApp(
         home:MyApp(),
@@ -12,6 +13,7 @@ void main() {
     class MyApp extends StatefulWidget {
         @override
         _pre createState()=>_pre();
+
     }
     class _pre extends State<MyApp> {
 
@@ -38,6 +40,7 @@ void main() {
         @override
         Widget build(BuildContext context) {
             return Scaffold(
+            drawer:navg(),
                 appBar: AppBar(
                     title: Text('my first app'),
                 ),
@@ -90,6 +93,7 @@ void main() {
                                     padding: EdgeInsets.only(
                                         top: 15,
                                     ),
+
                                     child: RaisedButton(
                                         textColor: Colors.white,
                                         color: Colors.blue,
