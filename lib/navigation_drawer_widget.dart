@@ -6,7 +6,7 @@ class navg extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Drawer(
-    child:Container(
+    child:Material(
     color:Color.fromRGBO(50,75,205,1),
       child:ListView(
     children:<Widget> [
@@ -15,6 +15,14 @@ class navg extends StatelessWidget{
 text:"hh",
 icon:Icons.people,
     ),
+      buildMenuItem(
+        text:"hh",
+        icon:Icons.face,
+      ),
+      buildMenuItem(
+        text:"hh",
+        icon:Icons.backpack,
+      ),
       ],
     ),
     ),
@@ -27,15 +35,9 @@ icon:Icons.people,
 
 final color = Colors.white;return ListTile
 (
-leading: Icon
-(
-icon,color:color),
-title: Text
-(
-text,style:TextStyle
-(
-color:color))
-,
+leading: Icon(icon,color:color),
+title: Text(text,style:TextStyle(color:color)),
+  onTap:(){},
 );
 }
   }
