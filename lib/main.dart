@@ -57,12 +57,12 @@ void main() {
                                     decoration: InputDecoration(
                                         border: OutlineInputBorder(
                                         ),
-                                        labelText: "Name"
+                                        labelText: "Email"
                                     ),
                                     validator: MultiValidator(
                                         [
-                                            MinLengthValidator(6, errorText: "min length should be 6"),
-                                            MaxLengthValidator(12, errorText: "max "),
+                                            EmailValidator(errorText: "invalid email id"),
+                                            RequiredValidator(errorText: "Required"),
                                         ]
 
 
@@ -80,8 +80,10 @@ void main() {
                                         ),
                                         validator:MultiValidator(
                                         [
-                                            EmailValidator(errorText:"invalid Email id" ),
                                             RequiredValidator(errorText: "Required"),
+                                            MaxLengthValidator(12,errorText:"Max length 12" ),
+                                            MinLengthValidator(6,errorText: "Min length 6"),
+
 
             ]
             ),
@@ -94,13 +96,17 @@ void main() {
                                         top: 15,
                                     ),
 
-                                    child: RaisedButton(
-                                        textColor: Colors.white,
-                                        color: Colors.blue,
-                                        onPressed:getData,
-                                        child: Text("Login"),
-                                    ),
+                                          child: RaisedButton(
+                                          textColor: Colors.white,
+                                          color: Colors.blue,
+                                          onPressed:getData,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(12),
+                                          ),
+                                          child: Text("Login"),
+                                      ),
                                 ),
+
 
 
                             ],
