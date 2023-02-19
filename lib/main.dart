@@ -47,7 +47,7 @@ void main() {
                 body: Padding(
                     padding: EdgeInsets.all(15),
                     child: Form(
-                        autovalidate:true,
+                        autovalidateMode:AutovalidateMode.always,
                         key: j,
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -96,15 +96,13 @@ void main() {
                                         top: 15,
                                     ),
 
-                                          child: RaisedButton(
-                                          textColor: Colors.white,
-                                          color: Colors.blue,
-                                          onPressed:getData,
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(12),
+                                          child:ElevatedButton(
+                                              onPressed: () {
+                                                  getData();
+                                              },
+                                              child:Text('Login'),
+
                                           ),
-                                          child: Text("Login"),
-                                      ),
                                 ),
 
 
